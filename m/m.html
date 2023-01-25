@@ -36,7 +36,7 @@ async function redirectTo(key, chksum) {
 	chksumflag = await validateChecksum(key, chksum);
 	
 	if(chksumflag == 1){
-		let redirectlink = baselink + key;
+		let redirectlink = baselink + key + "&c=" + chksum;
 		console.log(redirectlink);
 		window.location.replace(redirectlink);
 	} else {
