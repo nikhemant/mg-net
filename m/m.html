@@ -1,0 +1,55 @@
+<!doctype HTML>
+<html>
+<head>
+</head>
+<body>
+Loading...
+</body>
+<script>
+//https://www.miraag.net/m/m.html?i=<id>&c=<checksum>
+//https://www.miraag.net/m/m.html?i=xxxxx&c=xxxxxxxxxxxxxxxxx..
+//check if checksum is correct
+//redirect to https://miraag.com/mg/p/gc/gc?k=<i>
+
+const params = (new URL(location)).searchParams; //get query strings	
+let key = "2"; 
+let chksum = "demo"; 
+
+window.addEventListener('DOMContentLoaded', function() {
+	//set page params
+	if(params.has('i') && params.has('c')) { 
+		key = params.get('i'); //get key from query string
+		chksum = params.get('c'); //get link code from query string 
+		redirectTo(key, chksum);
+	}
+	else { 
+		console.log("id and/or checksum parameter not provided in link");
+		alert("Please scan valid qr code"); 
+		document.body.innerHTML = "Please scan valid qr code";
+	}
+});
+
+async function redirectTo(key, chksum) {
+	const baselink = "https://miraag.com/mg/p/gc/gc?k="
+
+	let chksumflag = 0;
+	chksumflag = await validateChecksum(key, chksum);
+	
+	if(chksumflag == 1){
+		let redirectlink = baselink + key;
+		console.log(redirectlink);
+		window.location.replace(redirectlink);
+	} else {
+		console.log("checksum failed");
+		alert("Please scan valid qr code");
+		document.body.innerHTML = "Please scan valid qr code";
+	}
+}
+
+async function validateChecksum(key, chksum){
+	//todo: validate source link using checksum
+	return 1;
+}
+
+</script>
+</html>
