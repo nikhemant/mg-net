@@ -9,7 +9,7 @@ Loading...
 //https://www.miraag.net/mg/p/gc/gc.html?i=<id>&c=<checksum>
 //https://www.miraag.net/mg/p/gc/gc.html?i=xxxxx&c=xxxxxxxxxxxxxxxxx..
 //e.g. https://miraag.net/mg/p/gc/gc.html?i=4&c=demo
-//check if checksum is correct
+//check if checksum is correct - this will be done on .com page so skip here and redirect
 //redirect to https://miraag.com/mg/p/gc/gc?k=<i>
 
 const params = (new URL(location)).searchParams; //get query strings	
@@ -49,6 +49,7 @@ async function redirectTo(key, chksum) {
 
 async function validateChecksum(key, chksum){
 	//todo: validate source link using checksum OR forward to link and validate on .com page
+	//this will be done on .com page so skip here and redirect
 	return 1;
 }
 
