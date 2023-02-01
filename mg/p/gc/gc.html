@@ -12,6 +12,8 @@ Loading...
 //check if checksum is correct - this will be done on .com page so skip here and redirect
 //redirect to https://miraag.com/mg/p/gc/gc?k=<i>
 
+const baselink = "https://miraag.com/mg/p/gc/gc?k="
+	
 const params = (new URL(location)).searchParams; //get query strings	
 let key = "2"; 
 let chksum = "demo"; 
@@ -31,7 +33,6 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 async function redirectTo(key, chksum) {
-	const baselink = "https://miraag.com/mg/p/gc/gc?k="
 
 	let chksumflag = 0;
 	chksumflag = await validateChecksum(key, chksum);
