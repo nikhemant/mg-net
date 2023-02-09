@@ -3,44 +3,58 @@
 <head>
 </head>
 <body>
-Loading...
+<div style="font-size:1.5em;">
+<br>
+<u>Allow Camera Access</u> and point on the whole card to see magic!!. <br>
+*Keep mobile and card steady for best experience<br><br>
+
+Please <a href="#" onclick="redirectTo()">click here</a> if you are not redirected within a few seconds
+<div>
 </body>
 <script>
 
 const baselink = "https://miraag.com/mg/p/g/vday/"
 	
 const params = (new URL(location)).searchParams; //get query strings	
-let i = "1"; 
 
 window.addEventListener('DOMContentLoaded', function() {
 	//set page params
 	if(params.has('i')) { 
 		i = params.get('i'); //get id from query string
-		redirectTo(i);
 	}
 	else { 
 		console.log("mdl and/or t parameter not provided in link");
 		alert("Please scan valid qr code"); 
 		document.body.innerHTML = "Please scan valid qr code";
 	}
+	setTimeout(redirectTo,7000)
 });
 
-function redirectTo(i) {
-	let redirectlink = "";
-	switch(i) {
-		case "1": redirectlink = baselink + "1-Gift-Card"; break;
-		case "2": redirectlink = baselink + "2-Gift-Card"; break;
-		case "3": redirectlink = baselink + "3-Gift-Card"; break;
-		case "4": redirectlink = baselink + "4-Gift-Card"; break;
-		case "5": redirectlink = baselink + "5-Gift-Card"; break;
-		case "6": redirectlink = baselink + "6-Gift-Card"; break;
-		/*
-			new ids will be added here		
-		*/
-		default: redirectlink = baselink + "index"; break;
-	}	
-	console.log(redirectlink);
-	window.location.replace(redirectlink);
+function redirectTo() {
+	//set page params
+	if(params.has('i')) { 
+		i = params.get('i'); //get id from query string
+		let redirectlink = "";
+		switch(i) {
+			case "1": redirectlink = baselink + "1-Gift-Card"; break;
+			case "2": redirectlink = baselink + "2-Gift-Card"; break;
+			case "3": redirectlink = baselink + "3-Gift-Card"; break;
+			case "4": redirectlink = baselink + "4-Gift-Card"; break;
+			case "5": redirectlink = baselink + "5-Gift-Card"; break;
+			case "6": redirectlink = baselink + "6-Gift-Card"; break;
+			/*
+				new ids will be added here		
+			*/
+			default: redirectlink = baselink + "index"; break;
+		}	
+		console.log(redirectlink);
+		window.location.replace(redirectlink);
+	}
+	else { 
+		console.log("i parameter not provided in link");
+		alert("Please scan valid qr code"); 
+		document.body.innerHTML = "Please scan valid qr code";
+	}
 }
 
 </script>
