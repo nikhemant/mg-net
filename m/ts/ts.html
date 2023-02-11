@@ -14,6 +14,7 @@ Please <a href="#" onclick="redirectTo()">click here</a> if you are not redirect
 <script>
 
 const baselink = "https://miraag.com/mg/p/ts/custom/"
+const htmlpagename = "ts";
 	
 const params = (new URL(location)).searchParams; //get query strings	
 
@@ -21,39 +22,23 @@ window.addEventListener('DOMContentLoaded', function() {
 	//set page params
 	if(params.has('i')) { 
 		i = params.get('i'); //get id from query string
+		setTimeout(redirectTo,7000);
 	}
 	else { 
 		console.log("mdl and/or t parameter not provided in link");
 		alert("Please scan valid qr code"); 
 		document.body.innerHTML = "Please scan valid qr code";
 	}
-	setTimeout(redirectTo,7000)
 });
 
 function redirectTo() {
 	//set page params
 	if(params.has('i')) { 
-		i = params.get('i'); //get id from query string
-		let arr = i.split("_");
-		let redirectlink = baselink + "ts" + arr[0] + "?i=" + arr[1]; //append order id and select html page ts1,2,3,4 based on design id
+		i = params.get('i'); //get id from query string, this will be the order id
+		let redirectlink = baselink + htmlpagename + "?o=" + i; //append order id, html page name will be same as the .com page ts1,2,3,4 which is based on design number
 				
-		if(i == "demo") { redirectlink = baselink + "1"; }
-		
-		/*		
-		switch(i) {
-			case "1": redirectlink = baselink + "ts1?"; break;  //tshirt design 1
-			case "2": redirectlink = baselink + "2-Gift-Card"; break;
-			case "3": redirectlink = baselink + "3-Gift-Card"; break;
-			case "4": redirectlink = baselink + "4-Gift-Card"; break;
-			case "5": redirectlink = baselink + "5-Gift-Card"; break;
-			case "6": redirectlink = baselink + "6-Gift-Card"; break;
-			
-			//	new ids will be added here		
-			
-			default: redirectlink = baselink + "1"; break;
-		}		
-		*/		
-		
+		//if(i == "demo") { redirectlink = baselink + "ts"; }
+				
 		console.log(redirectlink);
 		window.location.replace(redirectlink);
 	}
