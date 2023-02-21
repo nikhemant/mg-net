@@ -28,7 +28,8 @@ window.addEventListener('DOMContentLoaded', function() {
 	//set page params
 	if(params.has('i')) { 
 		i = params.get('i'); //get id from query string
-		setTimeout(redirectTo,7000);
+		//setTimeout(redirectTo,7000);
+		redirectTo();
 	}
 	else { 
 		console.log("mdl and/or t parameter not provided in link");
