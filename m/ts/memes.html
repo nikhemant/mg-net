@@ -2,16 +2,16 @@
 <html>
 <head>
 <style>
-	.topcontainer { position: absolute; top: 0; left: 0; width: 100%; height: 6%; display: flex; z-index: 10; }
-	.centercontainer { display: flex; justify-content: center; align-items: center; z-index: 10; position: relative;}
-	.centercontainer1 { position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: center; align-items: center; opacity:0.2;}
+	.topcontainer { position: absolute; top: 0; left: 0; width: 100%; height: 6%; display: flex; z_index: 10; }
+	.centercontainer { display: flex; justify_content: center; align_items: center; z_index: 10; position: relative;}
+	.centercontainer1 { position: absolute; top: 0; left: 0; width: 100%; display: flex; justify_content: center; align_items: center; opacity:0.2;}
 </style>	
 </head>
 <body>
-	<div class="topcontainer"><img id="img_miraag_tshirts_logo" src="imgs/miraag_tshirts_logo-sm.png" /></div>
+	<div class="topcontainer"><img id="img_miraag_tshirts_logo" src="imgs/miraag_tshirts_logo_sm.png" /></div>
 	<br><br><br><br>
-<div style="font-size:1.5em;z-index: 10; "><br><hr/>
-	<div class="centercontainer"><h1>On next page, <u>Allow Camera Access</u> and point on T-Shirt print</h1></div>
+<div style="font_size:1.5em;z_index: 10; "><br><hr/>
+	<div class="centercontainer"><h1>On next page, <u>Allow Camera Access</u> and point on T_Shirt print</h1></div>
 
 	<div class="centercontainer"><img id="imgallowaccess" src="imgs/allowaccess.gif" /></div>
 	<div class="centercontainer"><h1><a href="#" onclick="redirectTo()">Click here</a> to continue.</h1></div>
@@ -20,7 +20,7 @@
 </body>
 <script>
 
-const baselink = "https://miraag.com/mg/p/ts/memes/"
+const baselink = "https://miraag.com/mg/p/ts/ts/ts?cat=memes"
 	
 const params = (new URL(location)).searchParams; //get query strings	
 
@@ -44,13 +44,13 @@ function redirectTo() {
 		i = params.get('i'); //get id from query string
 		let redirectlink = "";
 		switch(i) {
-			case "1": redirectlink = baselink + "1_150-rupiya-dega"; break;
-			case "2": redirectlink = baselink + "2_utha-le-re-baba"; break;
-			case "3": redirectlink = baselink + "3_kuch-bhi"; break;
-			case "4": redirectlink = baselink + "4_ye-sab-doglapan-hai"; break;
-			case "5": redirectlink = baselink + "5_ye-meri-expertise-nahi-hai"; break;
-			case "6": redirectlink = baselink + "6_tension-leneka-nai-deneka"; break;
-			case "7": redirectlink = baselink + "7_i-am-just-a-cat"; break;
+			case "1": redirectlink = baselink + "&id=1&name=150_rupiya_dega"; break;
+			case "2": redirectlink = baselink + "&id=2&name=utha_le_re_baba"; break;
+			case "3": redirectlink = baselink + "&id=3&name=kuch_bhi"; break;
+			case "4": redirectlink = baselink + "&id=4&name=ye_sab_doglapan_hai"; break;
+			case "5": redirectlink = baselink + "&id=5&name=ye_meri_expertise_nahi_hai"; break;
+			case "6": redirectlink = baselink + "&id=6&name=tension_leneka_nai_deneka"; break;
+			case "7": redirectlink = baselink + "&id=7&name=i_am_just_a_cat"; break;
 			/*
 				new ids will be added here		
 			*/

@@ -20,7 +20,7 @@
 </body>
 <script>
 
-const baselink = "https://miraag.com/mg/p/ts/topic/"
+const baselink = "https://miraag.com/mg/p/ts/ts/ts?cat=topic"
 	
 const params = (new URL(location)).searchParams; //get query strings	
 
@@ -44,9 +44,9 @@ function redirectTo() {
 		i = params.get('i'); //get id from query string
 		let redirectlink = "";
 		switch(i) {
-			case "1": redirectlink = baselink + "1_raj-mudra"; break;
-			case "2": redirectlink = baselink + "2_raigad"; break;
-			case "3": redirectlink = baselink + "3_omnamahshivay"; break;
+			case "1": redirectlink = baselink + "&id=1&name=raj_mudra"; break;
+			case "2": redirectlink = baselink + "&id=2&name=raigad"; break;
+			case "3": redirectlink = baselink + "&id=3&name=omnamahshivay"; break;
 			/*
 				new ids will be added here		
 			*/
