@@ -1,0 +1,37 @@
+<!doctype HTML>
+<html>
+<head>
+<style>
+	.topcontainer { position: absolute; top: 0; left: 0; width: 100%; height: 6%; display: flex; z-index: 10; }
+	.centercontainer { display: flex; justify-content: center; align-items: center; z-index: 10; position: relative;}
+	.centercontainer1 { position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: center; align-items: center; opacity:0.2;}
+</style>	
+</head>
+<body>
+	<!-- <div class="topcontainer"><img id="img_miraag_tshirts_logo" src="imgs/miraag_tshirts_logo-sm.png" /></div>
+	<br><br><br><br>-->
+<div style="font-size:1.5em;z-index: 10; "><br><hr/>
+	<div class="centercontainer"><h1>On next page, <u>Allow Camera Access</u> and point on associated set of flash cards</h1></div>
+
+	<div class="centercontainer"><img id="imgallowaccess" src="imgs/allowaccess.gif" /></div>
+	<div class="centercontainer"><h1><a href="#" onclick="redirectTo()">Click here</a> to continue.</h1></div>
+<div>
+<!-- <div class="centercontainer1"><img style="width:100%;" id="s" src="imgs/bg.jpg" /></div> -->
+</body>
+<script>
+
+const baselink = "https://miraag.com/mg/p/fc/fc/fc_animals.html"
+	
+const params = (new URL(location)).searchParams; //get query strings	
+
+window.addEventListener('DOMContentLoaded', function() {
+		redirectTo();
+});
+
+function redirectTo() {
+	let redirectlink = baselink;
+	window.location.replace(redirectlink);
+}
+
+</script>
+</html>
