@@ -25,17 +25,7 @@ const baselink = "https://miraag.com/mg/p/ts/ts/ts?cat=topic"
 const params = (new URL(location)).searchParams; //get query strings	
 
 window.addEventListener('DOMContentLoaded', function() {
-	//set page params
-	if(params.has('i')) { 
-		i = params.get('i'); //get id from query string
-		//setTimeout(redirectTo,7000);
-		redirectTo();
-	}
-	else { 
-		console.log("mdl and/or t parameter not provided in link");
-		alert("Please scan valid qr code"); 
-		document.body.innerHTML = "Please scan valid qr code";
-	}
+	redirectTo();
 });
 
 function redirectTo() {
@@ -47,11 +37,14 @@ function redirectTo() {
 			case "1": redirectlink = baselink + "&id=1&name=raj_mudra"; break;
 			case "2": redirectlink = baselink + "&id=2&name=raigad"; break;
 			case "3": redirectlink = baselink + "&id=3&name=omnamahshivay"; break;
+			case "3": redirectlink = baselink + "&id=4&name=howsthejosh"; break;
+			case "3": redirectlink = baselink + "&id=5&name=naatunaatu"; break;
 			/*
 				new ids will be added here		
 			*/
 			default: redirectlink = baselink + "index"; break;
 		}	
+		redirectlink = setcolor(redirectlink);
 		console.log(redirectlink);
 		window.location.replace(redirectlink);
 	}
@@ -62,5 +55,13 @@ function redirectTo() {
 	}
 }
 
+function setcolor(redirectlink) {
+	//c is for color - default color is black, so no neet to have this parameter if ts color is black
+	if(params.has('c')) {
+		color = params.get('c'); //get id from query string
+		return redirectlink + "&color=" + color;
+	}
+	return redirectlink; //no color sent for black ts
+}
 </script>
 </html>
