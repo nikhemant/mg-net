@@ -34,6 +34,7 @@ function redirectTo() {
 		i = params.get('i'); //get id from query string
 		let redirectlink = baselink + "&id=" + i + "&name=" + i;
 		redirectlink = setcolor(redirectlink);
+		redirectlink = sethw(redirectlink, i);
 		console.log(redirectlink);
 		window.location.replace(redirectlink);
 	}
@@ -50,6 +51,18 @@ function setcolor(redirectlink) {
 		color = params.get('c'); //get id from query string
 		return redirectlink + "&color=" + color;
 	}
+	return redirectlink; //no color sent for black ts
+}
+
+function sethw(redirectlink, i) {
+	switch(i) {
+		case "ss": redirectlink = baselink + "&width=0.5&height=0.7"; break;
+		/*
+			only all special case ids will be added here		
+		*/
+		default: redirectlink = redirectlink; break;
+	}
+	
 	return redirectlink; //no color sent for black ts
 }
 </script>
