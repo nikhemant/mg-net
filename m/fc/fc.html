@@ -20,7 +20,7 @@
 </body>
 <script>
 
-const baselink = "https://miraag.com/mg/p/fc/fc/fc_animals.html"
+const baselink = "https://miraag.com/mg/p/fc/fc/"
 	
 const params = (new URL(location)).searchParams; //get query strings	
 
@@ -29,8 +29,18 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 function redirectTo() {
-	let redirectlink = baselink;
-	window.location.replace(redirectlink);
+	//set page params
+	if(params.has('i')) { 
+		i = params.get('i'); //get id from query string
+		let redirectlink = baselink + i + ".html";
+		console.log(redirectlink);
+		window.location.replace(redirectlink);
+	}
+	else { 
+		console.log("i parameter not provided in link");
+		alert("Please scan valid qr code"); 
+		document.body.innerHTML = "Please scan valid qr code";
+	}
 }
 
 </script>
