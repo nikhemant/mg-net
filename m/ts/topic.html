@@ -34,7 +34,7 @@ function redirectTo() {
 		i = params.get('i'); //get id from query string
 		let redirectlink = "";
 		switch(i) {
-			case "1": redirectlink = baselink + "&id=1&name=raj_mudra&height=1"; break;
+			case "1": redirectlink = baselink + "&id=1&name=raj_mudra"; break;
 			case "2": redirectlink = baselink + "&id=2&name=raigad"; break;
 			case "3": redirectlink = baselink + "&id=3&name=omnamahshivay"; break;
 			case "4": redirectlink = baselink + "&id=4&name=howsthejosh"; break;
@@ -59,9 +59,9 @@ function setcolor(redirectlink) {
 	//c is for color - default color is black, so no neet to have this parameter if ts color is black
 	if(params.has('c')) {
 		color = params.get('c'); //get id from query string
-		return redirectlink + "&color=" + color;
+		return redirectlink + "&color=" + color + "&height=1.5&width=1.5";
 	}
-	return redirectlink; //no color sent for black ts
+	return redirectlink + "&height=1"; //no color sent for black ts
 }
 </script>
 </html>
