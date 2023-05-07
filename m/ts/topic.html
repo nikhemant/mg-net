@@ -45,7 +45,7 @@ function redirectTo() {
 			*/
 			default: redirectlink = baselink + "index"; break;
 		}	
-		redirectlink = setcolor(redirectlink);
+		redirectlink = setcolor(redirectlink, i);
 		console.log(redirectlink);
 		window.location.replace(redirectlink);
 	}
@@ -56,13 +56,22 @@ function redirectTo() {
 	}
 }
 
-function setcolor(redirectlink) {
+function setcolor(redirectlink, i) {
 	//c is for color - default color is black, so no neet to have this parameter if ts color is black
+	let rl = redirectlink;
 	if(params.has('c')) {
 		color = params.get('c'); //get id from query string
-		return redirectlink + "&color=" + color + "&height=1.5&width=1.5";
+		rl = rl + "&color=" + color;
+		switch(i) {
+			case "1": rl = rl + "&height=1.5&width=1.5"; break;
+			/*
+				new ids will be added here		
+			*/
+			default: rl = rl; break;
+		}
+		return rl;
 	}
-	return redirectlink; //no color sent for black ts
+	return rl; //no color sent for black ts
 }
 </script>
 </html>
