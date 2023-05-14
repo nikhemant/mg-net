@@ -1,0 +1,78 @@
+<!doctype HTML>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+	.topcontainer { position: absolute; top: 0; left: 0; width: 100%; height: 6%; display: flex; z-index: 10; }
+	.centercontainer { display: flex; justify-content: center; align-items: center; z-index: 10; position: relative;}
+	.centercontainer1 { position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: center; align-items: center; opacity:0.2;}
+</style>	
+</head>
+<body>
+	<div class="topcontainer"><img id="img_miraag_logo" src="imgs/miraag_logo-sm.png" /></div>
+
+<div><br><hr/>
+	<div class="centercontainer"><h1>On next page, <u>Allow Camera Access</u> and point on the image</h1></div>
+
+	<div class="centercontainer"><img id="imgallowaccess" src="imgs/allowaccess.gif" /></div>
+	<div class="centercontainer"><h1><a href="#" onclick="redirectTo()">Click here</a> to continue.</h1></div>
+<div>
+<div class="centercontainer1"><img style="width:100%;" id="s" src="imgs/bg.jpg" /></div>
+</body>
+<script>
+
+//actual link: https://miraag.net/m/l/l.html?i=3
+const baselink = "https://miraag.com/mg/p/logo/logo/logo.html?logo="
+
+const params = (new URL(location)).searchParams; //get query strings	
+
+window.addEventListener('DOMContentLoaded', function() {
+	redirectTo();
+});
+
+function redirectTo() {
+	//set page params
+	if(params.has('i')) { 
+		i = params.get('i'); //get id from query string
+		let redirectlink = "";
+		switch(i) {
+			case "1": redirectlink = baselink + "sanjaynarvekar&width=1&height=1"; break;
+			case "2": redirectlink = baselink + "maharashtrashahirmovie&width=1&height=1"; break;
+			case "3": redirectlink = baselink + "nargisdutt&width=1&height=1"; break;
+			/*
+				new ids will be added here		
+			*/
+			default: redirectlink = baselink + "index"; break;
+		}
+		//redirectlink = setcolor(redirectlink, i);
+		console.log(redirectlink);
+		//window.location.replace(redirectlink);
+	}
+	else { 
+		console.log("i parameter not provided in link");
+		alert("Please scan valid qr code"); 
+		document.body.innerHTML = "Please scan valid qr code";
+	}
+}
+/*
+function setcolor(redirectlink, i) {
+	//c is for color - default color is black, so no neet to have this parameter if ts color is black
+	let rl = redirectlink;
+	if(params.has('c')) {
+		color = params.get('c'); //get id from query string
+		rl = rl + "&color=" + color;
+		switch(i) {
+			case "1": rl = rl + "&height=1.5&width=1.5"; break;
+
+				//new ids will be added here		
+			
+			default: rl = rl; break;
+		}
+		return rl;
+	}
+	return rl; //no color sent for black ts
+}
+*/
+</script>
+</html>
