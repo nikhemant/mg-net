@@ -23,7 +23,6 @@
 <script>
 
 //actual link: https://miraag.net/m/l/l.html?i=3
-const baselink = "https://miraag.com/mg/p/logo/logo/logo.html?l="
 
 const params = (new URL(location)).searchParams; //get query strings	
 
@@ -34,33 +33,33 @@ window.addEventListener('DOMContentLoaded', function() {
 function redirectTo() {
 	//set page params
 	if(params.has('i')) { 
-		i = params.get('i'); //get id from query string
+		let id = params.get('i'); //get id from query string
 		let redirectlink = "";
-		switch(i) {
-			case "1": redirectlink = baselink + "sanjaynarvekar&w=1&h=1"; break;
-			case "2": redirectlink = baselink + "maharashtrashahirmovie&w=1&h=1"; break;
-			case "3": redirectlink = baselink + "nargisdutt&w=1&h=1.25"; break;
-			case "4": redirectlink = baselink + "ashelar&w=1&h=1"; break;
-			case "5": redirectlink = baselink + "rajt&w=1&h=0.9"; break;
-			case "6": redirectlink = baselink + "lukek&w=1&h=0.5"; break;
-			case "7": redirectlink = baselink + "mawasthi&w=1&h=1"; break;
-			case "8": redirectlink = baselink + "sanjayn&w=1&h=1"; break;
-			case "9": redirectlink = baselink + "rahulg&w=0.9&h=0.6"; break;
-			case "10": redirectlink = baselink + "modi&w=0.9&h=0.6"; break;
-			case "11": redirectlink = baselink + "parinees&w=0.5&h=0.9"; break;
-			case "12": redirectlink = baselink + "savarkarmovie&w=0.8&h=0.9"; break;
-			case "13": redirectlink = baselink + "rajt1&w=0.9&h=0.5"; break;
-			case "14": redirectlink = baselink + "artofliving&w=0.7&h=0.9"; break;
-			case "15": redirectlink = baselink + "rtata&w=0.9&h=1.4"; break;
-			case "16": redirectlink = baselink + "rajt2&w=0.9&h=0.5"; break;
-			/*
-				new ids will be added here		
-			*/
-			default: redirectlink = baselink + "index"; break;
-		}
-		//redirectlink = setcolor(redirectlink, i);
-		console.log(redirectlink);
-		window.location.replace(redirectlink);
+
+		//"labels":{"id":"id", "DoNotshowINgallery":"g", "color":"c", "name":"n", "logo":"l", "width":"w", "height":"h", "Is3d":"d", "scaleif3d":"s","rotationif3d":"r"}
+	  	fetch("https://miraag.com/search/markers.json")
+		.then(response => {return response.json();})
+		.then(data => {
+			let pagelink = "https://miraag.com/mg/p/logo/logo/logo.html";
+			let pagelink3d = "https://miraag.com/mg/p/logo/logo/logo3d.html";
+      			
+			let logo = "", width ="", height = "";
+
+			let marker = data.markers.filter(marker => marker.i == id)[0];
+			logo = marker.l
+			if(marker.d == null || marker.d == "") { //not 3d
+				width = marker.w != null?marker.w:1;
+				height = marker.h != null?marker.h:1;
+				redirectlink = pagelink + "?l=" + logo + "&w=" + width + "&h=" + height;
+			} else {
+				scale = marker.s != null?marker.s:"1:1:1";
+				rotation = marker.r != null?marker.r:"0:0:0";
+				redirectlink = pagelink3d + "?l=" + logo + "&s=" + scale + "&r=" + rotation ;
+			}
+			//redirectlink = setcolor(redirectlink, i);
+			console.log(redirectlink);
+			//window.location.replace(redirectlink);
+		});      
 	}
 	else { 
 		console.log("i parameter not provided in link");
