@@ -37,11 +37,12 @@ function redirectTo() {
 		let redirectlink = "";
 
 		//"labels":{"id":"id", "DoNotshowINgallery":"g", "color":"c", "name":"n", "logo":"l", "width":"w", "height":"h", "Is3d":"d", "scaleif3d":"s","rotationif3d":"r"}
-	  	fetch("https://miraag.com/search/markers.json")
+		let homelink = "https://miraag.com/";
+	  	fetch(homelink + "/search/markers.json")
 		.then(response => {return response.json();})
 		.then(data => {
-			let pagelink = "https://miraag.com/mg/p/logo/logo/logo.html";
-			let pagelink3d = "https://miraag.com/mg/p/logo/logo/logo3d.html";
+			let pagelink = homelink + "/mg/p/logo/logo/logo.html";
+			let pagelink3d = homelink + "/mg/p/logo/logo/logo3d.html";
       			
 			let logo = "", width ="", height = "";
 
@@ -50,7 +51,8 @@ function redirectTo() {
 			if(marker.d == null || marker.d == "") { //not 3d
 				width = marker.w != null?marker.w:1;
 				height = marker.h != null?marker.h:1;
-				redirectlink = pagelink + "?l=" + logo + "&w=" + width + "&h=" + height;
+				orientation = marker.o != null?marker.o:"p";
+				redirectlink = pagelink + "?l=" + logo + "&w=" + width + "&h=" + height + "&o=" + orientation;
 			} else {
 				scale = marker.s != null?marker.s:"1:1:1";
 				rotation = marker.r != null?marker.r:"0:0:0";
