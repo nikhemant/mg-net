@@ -52,11 +52,14 @@ function redirectTo() {
 				width = marker.w != null?marker.w:1;
 				height = marker.h != null?marker.h:1;
 				orientation = marker.o != null?marker.o:"p";
-				redirectlink = pagelink + "?l=" + logo + "&w=" + width + "&h=" + height + "&o=" + orientation;
+				redirectlink = pagelink + "?l=" + logo + "&w=" + width + "&h=" + height + "&o=" + orientation+ (marker.b != null?"&b=" + marker.b:"") + (marker.bl != null?"&bl=" + marker.bl:"");
 			} else {
 				scale = marker.s != null?marker.s:"1:1:1";
 				rotation = marker.r != null?marker.r:"0:0:0";
-				redirectlink = pagelink3d + "?l=" + logo + "&s=" + scale + "&r=" + rotation ;
+				animationId = marker.a != null?marker.a:"0";
+				//btnText = marker.b != null?marker.b:"";
+				//btnLink = marker.bl != null?marker.bl:"";
+				redirectlink = pagelink3d + "?l=" + logo + "&s=" + scale + "&r=" + rotation + "&a=" + animationId + (marker.b != null?"&b=" + marker.b:"") + (marker.bl != null?"&bl=" + marker.bl:"");
 			}
 			//redirectlink = setcolor(redirectlink, i);
 			console.log(redirectlink);
