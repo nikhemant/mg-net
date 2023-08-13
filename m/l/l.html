@@ -56,10 +56,11 @@ function redirectTo() {
 			} else {
 				scale = marker.s != null?marker.s:"1:1:1";
 				rotation = marker.r != null?marker.r:"0:0:0";
-				animationId = marker.a != null?marker.a:"0";
-				//btnText = marker.b != null?marker.b:"";
-				//btnLink = marker.bl != null?marker.bl:"";
-				redirectlink = pagelink3d + "?l=" + logo + "&s=" + scale + "&r=" + rotation + "&a=" + animationId + (marker.b != null?"&b=" + marker.b:"") + (marker.bl != null?"&bl=" + marker.bl:"");
+				animationId = marker.a != null?"&a="+marker.a:"";
+				animationSpeed = marker.as != null?"&as="+marker.as:"";
+				btnText = (marker.b != null?"&b=" + marker.b:"");
+				btnLink = (marker.bl != null?"&bl=" + marker.bl:"");
+				redirectlink = pagelink3d + "?l=" + logo + "&s=" + scale + "&r=" + rotation + animationId + animationSpeed + btnText + btnLink;
 			}
 			//redirectlink = setcolor(redirectlink, i);
 			console.log(redirectlink);
