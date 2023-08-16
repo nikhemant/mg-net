@@ -36,9 +36,8 @@ function redirectTo() {
 		let id = params.get('i'); //get id from query string
 		let redirectlink = "";
 
-		//"labels":{"id":"id", "DoNotshowINgallery":"g", "color":"c", "name":"n", "logo":"l", "width":"w", "height":"h", "Is3d":"d", "scaleif3d":"s","rotationif3d":"r"}
 		let homelink = "https://miraag.com/";
-	  	fetch(homelink + "/search/markers.json")
+	  	fetch(homelink + "/search/markers.json?v=0.0.0")
 		.then(response => {return response.json();})
 		.then(data => {
 			let pagelink = homelink + "/mg/p/logo/logo/logo.html";
