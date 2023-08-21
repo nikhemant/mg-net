@@ -36,30 +36,38 @@ function redirectTo() {
 		let id = params.get('i'); //get id from query string
 		let redirectlink = "";
 
-		let homelink = "https://miraag.com/";
+		let homelink = "https://miraag.com";
 	  	fetch(homelink + "/search/markers.json?v=0.0.0")
 		.then(response => {return response.json();})
 		.then(data => {
 			let pagelink = homelink + "/mg/p/logo/logo/logo.html";
 			let pagelink3d = homelink + "/mg/p/logo/logo/logo3d.html";
+			let pagelink3dthenvideo = homelink + "/mg/p/logo/logo/logo3dthenvideo.html";
       			
 			let logo = "", width ="", height = "";
 
 			let marker = data.markers.filter(marker => marker.i == id)[0];
 			logo = marker.l
-			if(marker.d == null || marker.d == "") { //not 3d
-				width = marker.w != null?marker.w:1;
-				height = marker.h != null?marker.h:1;
-				orientation = marker.o != null?marker.o:"p";
-				redirectlink = pagelink + "?l=" + logo + "&w=" + width + "&h=" + height + "&o=" + orientation+ (marker.b != null?"&b=" + marker.b:"") + (marker.bl != null?"&bl=" + marker.bl:"");
-			} else {
-				scale = marker.s != null?marker.s:"1:1:1";
-				rotation = marker.r != null?marker.r:"0:0:0";
+			if(marker.d == null || marker.d == "") { //video only
+				width = marker.w != null?"&w="+marker.w:"";
+				height = marker.h != null?"&h="+marker.h:"";
+				orientation = marker.o != null?"&o="+marker.o:"";
+				btnText = (marker.b != null?"&b=" + marker.b:"");
+				btnLink = (marker.bl != null?"&bl=" + marker.bl:"");
+				redirectlink = pagelink + "?l=" + logo + width + height + orientation + btnText + btnLink;
+			} else if(marker.d == "1" || marker.d == "2"){ //3d or 3d+video
+				scale = marker.s != null?"&s="+marker.s:"";
+				rotation = marker.r != null?"&r="+marker.r:"";
 				animationId = marker.a != null?"&a="+marker.a:"";
 				animationSpeed = marker.as != null?"&as="+marker.as:"";
 				btnText = (marker.b != null?"&b=" + marker.b:"");
 				btnLink = (marker.bl != null?"&bl=" + marker.bl:"");
-				redirectlink = pagelink3d + "?l=" + logo + "&s=" + scale + "&r=" + rotation + animationId + animationSpeed + btnText + btnLink;
+				if(marker.d == "1")
+					redirectlink = pagelink3d + "?l=" + logo + scale + rotation + animationId + animationSpeed + btnText + btnLink;
+				else if(marker.d == "2")
+					redirectlink = pagelink3dthenvideo + "?l=" + logo + scale + rotation + animationId + animationSpeed + btnText + btnLink;
+			} else {
+				redirectlink = homelink + "/404.html";
 			}
 			//redirectlink = setcolor(redirectlink, i);
 			console.log(redirectlink);
