@@ -56,6 +56,9 @@ function redirectTo() {
 				btnLink = (marker.bl != null?"&bl=" + marker.bl:"");
 				redirectlink = pagelink + "?l=" + logo + width + height + orientation + btnText + btnLink;
 			} else if(marker.d == "1" || marker.d == "2"){ //3d or 3d+video
+				width = marker.w != null?"&w="+marker.w:"";
+				height = marker.h != null?"&h="+marker.h:"";
+				orientation = marker.o != null?"&o="+marker.o:"";
 				scale = marker.s != null?"&s="+marker.s:"";
 				rotation = marker.r != null?"&r="+marker.r:"";
 				animationId = marker.a != null?"&a="+marker.a:"";
@@ -65,7 +68,7 @@ function redirectTo() {
 				if(marker.d == "1")
 					redirectlink = pagelink3d + "?l=" + logo + scale + rotation + animationId + animationSpeed + btnText + btnLink;
 				else if(marker.d == "2")
-					redirectlink = pagelink3dthenvideo + "?l=" + logo + scale + rotation + animationId + animationSpeed + btnText + btnLink;
+					redirectlink = pagelink3dthenvideo + "?l=" + logo + scale + rotation + animationId + animationSpeed + width + height + orientation + btnText + btnLink;
 			} else {
 				redirectlink = homelink + "/404.html";
 			}
