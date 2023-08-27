@@ -61,14 +61,16 @@ function redirectTo() {
 				orientation = marker.o != null?"&o="+marker.o:"";
 				scale = marker.s != null?"&s="+marker.s:"";
 				rotation = marker.r != null?"&r="+marker.r:"";
+				position = marker.p != null?"&p="+marker.p:"";
 				animationId = marker.a != null?"&a="+marker.a:"";
 				animationSpeed = marker.as != null?"&as="+marker.as:"";
+				animationTimer = marker.at != null?"&at="+marker.at:"";
 				btnText = (marker.b != null?"&b=" + marker.b:"");
 				btnLink = (marker.bl != null?"&bl=" + marker.bl:"");
 				if(marker.d == "1")
-					redirectlink = pagelink3d + "?l=" + logo + scale + rotation + animationId + animationSpeed + btnText + btnLink;
+					redirectlink = pagelink3d + "?l=" + logo + scale + position + rotation + animationId + animationSpeed + btnText + btnLink;
 				else if(marker.d == "2")
-					redirectlink = pagelink3dthenvideo + "?l=" + logo + scale + rotation + animationId + animationSpeed + width + height + orientation + btnText + btnLink;
+					redirectlink = pagelink3dthenvideo + "?l=" + logo + scale + position + rotation + animationId + animationSpeed + animationTimer + width + height + orientation + btnText + btnLink;
 			} else {
 				redirectlink = homelink + "/404.html";
 			}
