@@ -44,8 +44,9 @@ function redirectTo() {
 			let pagelink3d = homelink + "/mg/p/logo/logo/logo3d.html";
 			let pagelink3dthenvideo = homelink + "/mg/p/logo/logo/logo3dthenvideo.html";
       			
-			let logo = "", width ="", height = "";
-
+			let logo="", width="", height="", orientation="", scale="", rotation="", position="", animationId="", animationSpeed="", animationTimer="", btnText="", btnLink="";
+			let redirectlink = "";
+				
 			let marker = data.markers.filter(marker => marker.i == id)[0];
 			logo = marker.l
 			if(marker.d == null || marker.d == "") { //video only
