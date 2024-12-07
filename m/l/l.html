@@ -41,7 +41,7 @@ async function logAnalytics() {
 			headers: {
 				'Content-Type': 'application/json', //might nor work if mode is no-cors
 			},
-			mode: 'cors', 
+			mode: 'no-cors', 
 			method: 'POST', // or 'PUT'
 			body: JSON.stringify(data),
 	})
