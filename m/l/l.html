@@ -27,8 +27,29 @@
 const params = (new URL(location)).searchParams; //get query strings	
 
 window.addEventListener('DOMContentLoaded', function() {
+	logAnalytics();
 	redirectTo();
 });
+
+async function logAnalytics() {
+	data = {
+	  user_id : "tmp",
+	  link : window.location.href
+	}
+
+	let request = await fetch('https://mg-visit-log.nikhemant.workers.dev/', {
+			headers: {
+				'Content-Type': 'application/json', //might nor work if mode is no-cors
+			},
+			//mode: 'no-cors', 
+			method: 'POST', // or 'PUT'
+			body: JSON.stringify(data),
+	})
+
+	let response = await request.text(); // read response body as text
+	console.log(response);
+}
+
 
 function redirectTo() {
 	//set page params
