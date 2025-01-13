@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+
+window.addEventListener('DOMContentLoaded', function() {
+	redirectTo();
+});
+
+function redirectTo() {
+	//set page params
+	const params = (new URL(location)).searchParams; //get query strings	
+	if(params.has('i')) { 
+		let id = params.get('i'); //get id from query string
+		let redirectlink = "";
+
+		switch(id) {
+			case "1":
+				redirectlink = "https://youtu.be/5G4u5kM0Y0Y";
+				console.log("case: 1");
+				break;
+			default:
+				console.log("case: default");
+				break;
+		}
+
+		console.log(redirectlink);
+		if(redirectlink != "")
+			window.location.replace(redirectlink);
+		else
+			document.body.innerHTML = "<h3>qr code does not exist</h3>";
+
+	}
+	else { 
+		console.log("i parameter not provided in link");
+		alert("Please scan valid qr code"); 
+		document.body.innerHTML = "<h3>Please scan valid qr code</h3>";
+	}
+}
+
+</script>
+</html>
