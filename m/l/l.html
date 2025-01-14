@@ -69,7 +69,8 @@ function redirectTo() {
 			let redirectlink = "";
 				
 			let marker = data.markers.filter(marker => marker.i == id)[0];
-			logo = marker.l
+			logo = marker.l;
+			logoname = marker.n != null?"&n="+marker.n:""; 
 			if(marker.d == null || marker.d == "") { //video only
 				width = marker.w != null?"&w="+marker.w:"";
 				height = marker.h != null?"&h="+marker.h:"";
@@ -97,6 +98,7 @@ function redirectTo() {
 				redirectlink = homelink + "/404.html";
 			}
 			//redirectlink = setcolor(redirectlink, i);
+			redirectlink = redirectlink + logoname;
 			console.log(redirectlink);
 			window.location.replace(redirectlink);
 		});      
