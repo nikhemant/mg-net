@@ -58,7 +58,8 @@ function redirectTo() {
 		let redirectlink = "";
 
 		let homelink = "https://miraag.com";
-	  	fetch(homelink + "/search/markers.json?v=0.0.0")
+	  	// fetch(homelink + "/search/markers.json?v=0.0.0")
+		fetch("https://mg-markers-json.nikhemant.workers.dev/?id=" + id, {	method: 'GET' })
 		.then(response => {return response.json();})
 		.then(data => {
 			let pagelink = homelink + "/mg/p/logo/logo/logo.html";
@@ -67,8 +68,17 @@ function redirectTo() {
       			
 			let logo="", width="", height="", orientation="", scale="", rotation="", position="", animationId="", animationSpeed="", animationTimer="", btnText="", btnLink="";
 			let redirectlink = "";
-				
-			let marker = data.markers.filter(marker => marker.i == id)[0];
+
+			if(data.length == 0) {				
+				console.log("provided i parameter does not exist");
+				alert("Please scan valid qr code"); 
+				document.body.innerHTML = "Please scan valid qr code";
+				return;
+			}
+
+			const data1 = data[0].json_details;
+			const marker = JSON.parse(data1);
+			// let marker = data.markers.filter(marker => marker.i == id)[0]; //for file markers.json
 			logo = marker.l;
 			logoname = marker.n != null?"&n="+marker.n:""; 
 			if(marker.d == null || marker.d == "") { //video only
